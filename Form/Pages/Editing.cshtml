@@ -1,0 +1,161 @@
+﻿@page "/editing"
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Редактирование задания</title>
+	<base href="~/" />
+	<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+	<link href="css/site.css" rel="stylesheet" />
+	<link rel="stylesheet" href="css.css" />
+	<script type="text/javascript">
+		function showOrHide(vib, vod) {
+			vib = document.getElementById(vib);
+			vod = document.getElementById(vod);
+			if (vib.checked) vod.style.display = "block";
+			else vod.style.display = "none";
+		}
+	</script>
+</head>
+<body>
+
+	<div class="container">
+		<div class="pad">
+			<input list="task" class="input" placeholder="Сканирование компьютера" />
+			<datalist id="task">
+				<option value="Задание">
+				<option value="Задание">
+				<option value="Задание">
+			</datalist>
+		</div><hr>
+
+		<div class="in">
+			<p class="name-task">Название задачи:</p>
+			<input class="input" placeholder="Сканирование компьютера">
+		</div>
+
+		<div class="tasks">
+			<div>
+				<input class="av" type='radio' id='vib1' onchange='showOrHide("vib1", "vod1");' />Однократно при запуске системы
+				<br />
+				<div class="f">
+					<input class="av" type='radio' id='vib2' onchange='showOrHide("vib2", "vod2");' />Однократно
+					<br />
+					<div class="avch" id='vod2' style='display: none;'>
+						<p>Дата и время запуска</p>
+						<input type="datetime-local">
+					</div>
+				</div>
+				<div class="f">
+					<input class="av" type='radio' id='vib3' onchange='showOrHide("vib3", "vod3");' />Многократно
+					<br />
+					<div class="avch" id='vod3' style='display: none;'>
+						<p>Интервал между запусками задачи(мин.)</p>
+						<input type="datetime">
+					</div>
+				</div>
+				<div class="f">
+					<input class="av" type='radio' id='vib4' onchange='showOrHide("vib4", "vod4");' />Ежедневно
+					<br />
+					<div class="avch" id='vod4' style='display: none;'>
+						<p>Время выполнения задачи</p>
+						<input type="time">
+						<p>День недели</p>
+						<input type="week">
+					</div>
+				</div>
+				<div class="f">
+					<input class="av" type='radio' id='vib5' onchange='showOrHide("vib5", "vod5");' />Еженедельно
+					<br />
+					<div class="avch" id='vod5' style='display: none;'>
+						<p>Время выполнения задачи</p>
+						<input type="time">
+						<p>День недели</p>
+						<input type="week">
+					</div>
+				</div>
+				</div>
+
+
+
+
+
+
+				<!--<div><hr>
+		<p style="font-weight: bold;">Запуск задачи</p>
+		<div class="f">
+			<input class="st_task" type="radio" id="rule-active" name="rule-active">
+			<p>Однократно при запуске системы</p>
+		</div>
+		<div class="f">
+			<input class="st_task" type="radio" id="rule-active" name="rule-active">
+			<p>Однократно</p>
+		</div>
+		<div class="f">
+			<input class="st_task" type="radio" id="rule-active" name="rule-active">
+			<p>Многократно</p>
+		</div>
+		<div class="f">
+			<input class="st_task" type="radio" id="rule-active" name="rule-active">
+			<p>Ежедневно</p>
+		</div>
+		<div class="f">
+			<input class="st_task" type="radio" id="rule-active" name="rule-active">
+			<p>Еженедельно</p>
+		</div>
+	</div>-->
+			</div>
+			<hr>
+			<p style="font-weight: bold">Объекты сканирования</p>
+
+			<div class="obj_skan">
+				<div class="vs">
+					<div class="f">
+						<input class="st_skan" type="checkbox" id="rule-active" name="rule-active">
+						<p>Загрузочные секторы</p>
+					</div>
+					<div class="f">
+						<input class="st_skan" type="checkbox" id="rule-active" name="rule-active">
+						<p>Локальные диски</p>
+					</div>
+					<div class="f">
+						<input class="st_skan" type="checkbox" id="rule-active" name="rule-active">
+						<p>Съемные диски</p>
+					</div>
+				</div>
+				<div class="vs">
+					<div class="f">
+						<input class="st_skan" type="checkbox" id="rule-active" name="rule-active">
+						<p>Система</p>
+					</div>
+					<div class="f">
+						<input class="st_skan" type="checkbox" id="rule-active" name="rule-active">
+						<p>Список</p>
+					</div>
+					<div class="f">
+						<input class="st_skan" type="checkbox" id="rule-active" name="rule-active">
+						<p>Оперативная память</p>
+					</div>
+				</div>
+			</div><hr>
+			<p style="width: 100%; background-color: silver; padding-left: 10px; ">Директории и файлы</p>
+			<p style="width: 100%; background-color: gray; padding-left: 10px; margin-bottom: 100px; color: white ">С:\Users\admin\</p>
+			<div>
+				<button class="bt">Создать</button>
+				<button class="bt">Редактировать</button>
+				<button class="bt">Удалить</button>
+			</div>
+			<div align="right">
+				<button class="bt">Сохранить</button>
+				<button class="bt">Отмена</button>
+			</div>
+		</div>
+
+	<script src="_framework/blazor.server.js"></script>
+	<script src="_content/MudBlazor/MudBlazor.min.js "></script>
+</body>
+</html>
+
