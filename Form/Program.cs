@@ -26,3 +26,13 @@ namespace Form
                 });
     }
 }
+
+namespace Form.Pages
+{
+    public class TasksItem
+    {
+        public bool IsDone { get; set; }
+
+        public string Name { get; set; }
+    }
+}

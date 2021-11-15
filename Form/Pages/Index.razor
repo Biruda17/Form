@@ -3,37 +3,69 @@
 <div class="container">
 	<div class="in">
 		<p class="name">Имя</p>
-		<input class="input" placeholder="Планировщик задач">
+		<input class="input" placeholder="Планировщик задач" @bind="newTask">
 	</div>
 	<div class="cb">
 		<input class="rule" type="checkbox" id="rule-active" name="rule-active">
 		<p class="p_rule">Правило активно</p>
 	</div>
-
-	<div>
-		<table>
-			<tr>
-				<th></th>
-				<th>Наименование задания</th>
-			</tr>
-			<tr>
-				<td align="center">
-					<input type="checkbox" id="rule-active" name="rule-active">
-				</td>
-				<td>
-					<p class="rs">Сканирование компьютера</p>
-				</td>
-			</tr>
-		</table>
-		<div>
-			<button class="bt">Создать</button>
-			<a href="editing"><button class="bt">Редактировать</button></a>
-			<button class="bt">Удалить</button>
-			<button class="bt">По умолчанию</button>
-		</div>
-		<div align="right">
-			<button class="bt">Сохранить</button>
-			<button class="bt">Отмена</button>
+	<div class="row">
+		<div class="col">
+			<table>
+				<thead class="table">
+					<tr>
+						<th scope="col" style="width:10px"></th>
+						<th scope="col" style="width:70%; margin-left: -200px;" >Наименование задачи</th>
+						<th scope="col"></th>
+					</tr>
+				</thead>
+				@foreach (var item in tasks)
+				{
+					<tbody>
+						<tr>
+							<td>
+								<input type="checkbox" style="margin-left:5px;" @bind="item.IsDone" />
+							</td>
+							<td align="left" style="margin-left: 10px;">
+								@item.Name
+							</td>
+							<td>
+								<button class="bt_tb" @onclick="(() => DeleteTask(item))" style="margin-left: 35%;">Удалить</button>
+							</td>
+						</tr>
+					</tbody>
+				}
+			</table>
+			<div>
+				<button class="bt" @onclick="AddTask">Создать</button>
+				<a href="editing"><button class="bt">Редактировать</button></a>
+				<button class="bt">По умолчанию</button>
+			</div>
+			<div align="right">
+				<button class="bt">Сохранить</button>
+				<button class="bt">Отмена</button>
+			</div>
 		</div>
 	</div>
 </div>
+
+
+	@code{
+		private IList<TasksItem> tasks = new List<TasksItem>();
+
+		private string newTask;
+
+		private void AddTask()
+		{
+			if (!string.IsNullOrWhiteSpace(newTask))
+			{
+				tasks.Add(new TasksItem { Name = newTask });
+				newTask = string.Empty;
+			}
+		}
+
+		private void DeleteTask(TasksItem deletedItem)
+		{
+			tasks.Remove(deletedItem);
+		}
+	}

@@ -1,2 +1,115 @@
-﻿
+﻿@page "/editing"
 
+<div class="container">
+	<div class="pad">
+		<input list="task" class="input" placeholder="Сканирование компьютера" />
+		<datalist id="task">
+			<option value="Задание"></option>
+			<option value="Задание"></option>
+			<option value="Задание"></option>
+		</datalist>
+	</div><hr>
+
+<div class="in">
+	<p class="name-task">Название задачи:</p>
+	<input class="input" placeholder="Сканирование компьютера">
+</div>
+
+<div class="row">
+	<div class="col-4">
+		<p>Запуск задачи</p>
+		<input type="radio" name="launch" /> Однократно при запуске системы <br>
+		<input type="radio" name="launch" value="2" checked="@(select == 2)" @onclick="@(() =>select = 2)" /> Однократно <br>
+		<input type="radio" name="launch" value="3" checked="@(select == 3)" @onclick="@(() =>select = 3)" /> Многократно <br>
+		<input type="radio" name="launch" value="4" checked="@(select == 4)" @onclick="@(() =>select = 4)" /> Ежедневно <br>
+		<input type="radio" name="launch" value="5" checked="@(select == 5)" @onclick="@(() =>select = 5)" /> Еженедельно <br>
+	</div>
+
+	<div class="col-4" id="start time">
+		@if (select == 2)
+		{
+			<form id="0">
+				<label for="localdate">Дата и время запуска</label><br>
+				<input type="datetime-local" id="localdate" name="date" />
+			</form>
+		}
+		else if (select == 3)
+		{
+			<form id="1">
+				<label for="localdate">Интервал между запусками задачи(мин.)</label>
+				<input type="time" id="localdate" name="date" />
+			</form>
+		}
+		else if (select == 4)
+		{
+			<form id="2">
+				<label for="localdate">Интервал между запусками задачи(мин.)</label>
+				<input type="time" id="localdate" name="date" />
+			</form>
+		}
+		else if (select == 5)
+		{
+			<form id="3">
+				<div>
+					<label for="localdate">Время для выполнения задачи:</label>
+					<input type="time" id="localdate" name="date" />
+				</div>
+				<div>
+					<label for="localdate">День недели:</label>
+					<input type="date" id="localdate" name="date" />
+				</div>
+			</form>
+		}
+	</div>
+</div>
+
+
+<hr>
+<p style="font-weight: bold">Объекты сканирования</p>
+
+<div class="obj_skan">
+	<div class="vs">
+		<div class="f">
+			<input class="st_skan" type="checkbox" id="rule-active" name="rule-active">
+			<p>Загрузочные секторы</p>
+		</div>
+		<div class="f">
+			<input class="st_skan" type="checkbox" id="rule-active" name="rule-active">
+			<p>Локальные диски</p>
+		</div>
+		<div class="f">
+			<input class="st_skan" type="checkbox" id="rule-active" name="rule-active">
+			<p>Съемные диски</p>
+		</div>
+	</div>
+	<div class="vs">
+		<div class="f">
+			<input class="st_skan" type="checkbox" id="rule-active" name="rule-active">
+			<p>Система</p>
+		</div>
+		<div class="f">
+			<input class="st_skan" type="checkbox" id="rule-active" name="rule-active">
+			<p>Список</p>
+		</div>
+		<div class="f">
+			<input class="st_skan" type="checkbox" id="rule-active" name="rule-active">
+			<p>Оперативная память</p>
+		</div>
+	</div>
+</div>
+<hr>
+<p style="width: 100%; background-color: silver; padding-left: 10px; ">Директории и файлы</p>
+<p style="width: 100%; background-color: gray; padding-left: 10px; margin-bottom: 100px; color: white ">С:\Users\admin\</p>
+<div>
+	<button class="bt">Создать</button>
+	<button class="bt">Редактировать</button>
+	<button class="bt">Удалить</button>
+</div>
+<div align="right">
+	<button class="bt">Сохранить</button>
+	<button class="bt">Отмена</button>
+</div>
+</div>
+@code{
+	private int select = 0;
+}

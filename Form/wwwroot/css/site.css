@@ -227,6 +227,7 @@ body {
 }
 
 table {
+    align-content:center;
     border: 1px solid silver;
     width: 100%;
     border-collapse: separate;
@@ -234,10 +235,9 @@ table {
 }
 
 th {
-    background-color: silver;
-    text-align: left;
+ background-color: silver;
     padding-left: 40px;
-}
+}  
 
 .cb1 {
     margin-top: -5px;
@@ -315,3 +315,19 @@ th:last-child {
     background-color: gray;
     color: white;
 }
+
+.bt_tb {
+    background-color: silver;
+    border-radius: 10px;
+    border: none;
+    transition: 0.5s;
+    color: white;
+}
+
+.bt_tb:hover {
+    transition: 0.5s;
+    background-color: #e64242;
+    color: white;
+}
+
+
